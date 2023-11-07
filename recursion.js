@@ -173,14 +173,51 @@ function binarySearchIndex(arr, val) {
 // }
 
 /** "Returns boolean based on whether brackets are ordered and closed properly" */
-function balancedBrackets(str, mostRecentRight) {
-  //step through string, until we hit a right bracket, step backwards(???) to see corresponding l bracket?
 
-  /*
-    l pointer, r pointer
-    looping through, hit a l bracket
-     -> keep going right until we hit a match
-  */
+expect(balancedBrackets('')).toBe(true);
+expect(balancedBrackets('hello')).toBe(true);
+expect(balancedBrackets('(hi)[there]')).toBe(true);
+expect(balancedBrackets('[()][(a)(b)]()')).toBe(true);
+
+function balancedBrackets(str, left = "") {
+  //go until we hit a left bracket.
+  //Then: if left -> drop down
+  //If right, compare and return
+
+  '(hello)'
+
+  for (let i = 0; i < str.length; i++){
+    const char = str[i];
+    if ("([{".includes(char)){
+      left = char + left;
+    }
+    if (")]}".includes(char)){
+      if (char !== left[0]) { //technically, right flipped left
+        return false;
+      } else {
+        left = left.slice(1);
+      }
+    }
+  }
+
+  // return true;
+}
+
+function checkBracketPairs(char1, char2) {
+  console.log("Comparing", char1, char2);
+  if (char1 === "(" && char2 === ")") return true;
+  if (char1 === "[" && char2 === "]") return true;
+  if (char1 === "{" && char2 === "}") return true;
+
+  return false;
+}
+
+
+  // /*
+  //   l pointer, r pointer
+  //   looping through, hit a l bracket
+  //    -> keep going right until we hit a match
+  // */
 
   // for (let i = 0; i < str.length; i++){
   //   const char = str[i];
@@ -196,17 +233,21 @@ function balancedBrackets(str, mostRecentRight) {
   //   }
   // }
 
-  // return true;
-}
+// const char *match(const char *str)
+// {
+//         if( *str == '\0' || *str == ')' ) { return str; }
+//         if( *str == '(' )
+//         {
+//                 const char *closer = match(++str);
+//                 if( *closer == ')' )
+//                 {
+//                         return match(++closer);
+//                 }
+//                 return str - 1;
+//         }
 
-function checkBracketPairs(char1, char2) {
-  console.log("Comparing", char1, char2);
-  if (char1 === "(" && char2 === ")") return true;
-  if (char1 === "[" && char2 === "]") return true;
-  if (char1 === "{" && char2 === "}") return true;
-
-  return false;
-}
+//         return match(++str);
+// }
 
 module.exports = {
   product,
