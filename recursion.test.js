@@ -49,43 +49,43 @@ describe("find", function() {
   });
 });
 
-// describe("isPalindrome", function() {
-//   it("returns true if the string is a palindrome", function() {
-//     expect(isPalindrome("")).toBe(true);
-//     expect(isPalindrome("x")).toBe(true);
-//     expect(isPalindrome("noon")).toBe(true);
-//     expect(isPalindrome("tacocat")).toBe(true);
+describe("isPalindrome", function() {
+  it("returns true if the string is a palindrome", function() {
+    expect(isPalindrome("")).toBe(true);
+    expect(isPalindrome("x")).toBe(true);
+    expect(isPalindrome("noon")).toBe(true);
+    expect(isPalindrome("tacocat")).toBe(true);
 
-//   });
+  });
 
-//   it("returns false if the string is not a palindrome", function() {
-//     expect(isPalindrome("az")).toBe(false);
-//     expect(isPalindrome("tacodog")).toBe(false);
-//   });
-// });
+  it("returns false if the string is not a palindrome", function() {
+    expect(isPalindrome("az")).toBe(false);
+    expect(isPalindrome("tacodog")).toBe(false);
+  });
+});
 
-// describe("findIndex", function() {
-//   let animals = ["duck", "cat", "cat", "pony"];
+describe("findIndex", function() {
+  let animals = ["duck", "cat", "cat", "pony"];
 
-//   it("returns the first index of the value in the array if the value exists", function() {
-//     expect(findIndex(animals, "duck")).toBe(0);
-//     expect(findIndex(animals, "cat")).toBe(1);
-//     expect(findIndex(animals, "pony")).toBe(3);
-//   });
+  it("returns the first index of the value in the array if the value exists", function() {
+    expect(findIndex(animals, "duck")).toBe(0);
+    expect(findIndex(animals, "cat")).toBe(1);
+    expect(findIndex(animals, "pony")).toBe(3);
+  });
 
-//   it("returns -1 if the value does not exist", function() {
-//     expect(findIndex(animals, "porcupine")).toBe(-1);
-//   });
-// });
+  it("returns -1 if the value does not exist", function() {
+    expect(findIndex(animals, "porcupine")).toBe(-1);
+  });
+});
 
-// describe("revString", function() {
-//   it("returns a reversed copy of the string", function() {
-//     expect(revString("")).toBe("");
-//     expect(revString("x")).toBe("x");
-//     expect(revString("cat")).toBe("tac");
-//     expect(revString("duck")).toBe("kcud");
-//   });
-// });
+describe("revString", function() {
+  it("returns a reversed copy of the string", function() {
+    expect(revString("")).toBe("");
+    expect(revString("x")).toBe("x");
+    expect(revString("cat")).toBe("tac");
+    expect(revString("duck")).toBe("kcud");
+  });
+});
 
 // describe("gatherStrings", function() {
 //   it("gathers all object string values into an array", function() {

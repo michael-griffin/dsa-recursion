@@ -50,20 +50,52 @@ function find(arr, val) {
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
-function isPalindrome(str) {
+/*
+  "wow"
+  w === w && isPalindrome(o) (-> true)
+  o < 2 -> true
+*/
 
+function isPalindrome(str) {
+  //base case length <2
+  if (str.length < 2) return true;
+
+  const len = str.length;
+  //whether letters on either end match AND isPalindrome (slice 1, length-1)
+  return str[0] === str[len - 1] && isPalindrome(str.slice(1, len - 1));
+  // if (str[0] !== str[len - 1]) return false;
+  // else return isPalindrome(str.slice(1, len - 1));
 }
 
 /** revString: return a copy of a string, but in reverse. */
 
 function revString(str) {
+  if (str.length === 0) return "";
 
+  const lastIndex = str.length - 1;
+  return str[lastIndex] + revString(str.slice(0, lastIndex));
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
-function findIndex(arr, val) {
+/*
+["duck", "cat", "cat", "dog"], "platypus"
 
+d != p -> 1 + findIndex(...) || -1 -> -1
+c != p -> 1 + findIndex(...) || -1 -> 0
+c != p -> 1 + findIndex(...) || -1 ->0
+d != p -> 1 + findIndex(...) || -1 -> 0
+length 0 -> -1
+
+
+1 + (findIndex === -1) === 0 -> false
+*/
+
+function findIndex(arr, val) {
+  if (arr.length === 0) return -1;
+
+  if (arr[0] === val) return 0;
+  return 1 + findIndex(arr.slice(1), val) || - 1;
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
