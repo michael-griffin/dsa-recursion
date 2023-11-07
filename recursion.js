@@ -182,11 +182,21 @@ function balancedBrackets(str, mostRecentRight) {
      -> keep going right until we hit a match
   */
 
-  for (let i = 0; i < str.length; i++){
+  // for (let i = 0; i < str.length; i++){
+  //   const char = str[i];
+  //   if (")]}".includes(char)){
+  //     for(let j = i -1; j >= 0; j--){
+  //       const reverseChar = str[j];
+  //       if ("([{".includes(reverseChar)){
+  //         if (!checkBracketPairs) return false;
+  //         str.split("").splice(j, i-j).join("");
+  //       }
+  //       return false;
+  //     }
+  //   }
+  // }
 
-  }
-
-  return true;
+  // return true;
 }
 
 function checkBracketPairs(char1, char2) {
