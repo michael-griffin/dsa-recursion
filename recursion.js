@@ -138,7 +138,31 @@ function binarySearch(arr, val) {
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
 
+/*
+  if on left: return the index
+  if on the right return current mid + recursive result -- but, split up so that we don't have to do crazy OR thing
+
+  binarySearchIndex([1, 2, 3, 4], 4)
+
+  mid = 1
+  arr[1] === 2 (< 4)
+    -> fn([3,4], 4) (awaiting return) mid is 1
+      -> fun([4], 4) (awaiting return) mid is 0
+        -> 0
+
+*/
 function binarySearchIndex(arr, val) {
+  if (arr.length === 0) return -1;
+
+  const mid = Math.floor((arr.length - 1) / 2);
+
+  if (arr[mid] === val) return mid;
+  if (arr[mid] > val) return binarySearchIndex(arr.slice(0, mid), val);
+  else{
+    const returnedIndex = binarySearchIndex(arr.slice(mid + 1), val);
+    if (returnedIndex === -1) return -1;
+    else return mid + 1 + returnedIndex;
+  }
 
 }
 
@@ -148,6 +172,31 @@ function binarySearchIndex(arr, val) {
 //
 // }
 
+/** "Returns boolean based on whether brackets are ordered and closed properly" */
+function balancedBrackets(str, mostRecentRight) {
+  //step through string, until we hit a right bracket, step backwards(???) to see corresponding l bracket?
+
+  /*
+    l pointer, r pointer
+    looping through, hit a l bracket
+     -> keep going right until we hit a match
+  */
+
+  for (let i = 0; i < str.length; i++){
+
+  }
+
+  return true;
+}
+
+function checkBracketPairs(char1, char2) {
+  console.log("Comparing", char1, char2);
+  if (char1 === "(" && char2 === ")") return true;
+  if (char1 === "[" && char2 === "]") return true;
+  if (char1 === "{" && char2 === "}") return true;
+
+  return false;
+}
 
 module.exports = {
   product,
@@ -160,4 +209,5 @@ module.exports = {
   gatherStrings,
   binarySearch,
   binarySearchIndex,
+  balancedBrackets
 };

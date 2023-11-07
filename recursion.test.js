@@ -9,6 +9,7 @@ const {
   gatherStrings,
   binarySearch,
   binarySearchIndex,
+  balancedBrackets,
 } = require("./recursion");
 
 describe("product", function() {
@@ -136,16 +137,33 @@ describe("binarySearch", function () {
   });
 });
 
-// describe("binarySearchIndex", function () {
-//   it("should find the index of a value in a sorted array", function () {
-//     expect(binarySearchIndex([1, 2, 3, 4], 4)).toEqual(3);
-//     expect(binarySearchIndex([1, 2], 1)).toEqual(0);
-//     expect(binarySearchIndex([1, 2, 3, 4, 5, 6, 7], 6)).toEqual(5);
-//   });
+describe("binarySearchIndex", function () {
+  it("should find the index of a value in a sorted array", function () {
+    expect(binarySearchIndex([1, 2, 3, 4], 4)).toEqual(3);
+    expect(binarySearchIndex([1, 2], 1)).toEqual(0);
+    expect(binarySearchIndex([1, 2, 3, 4, 5, 6, 7], 6)).toEqual(5);
+  });
 
-//   it("should return -1 if the value is not found", function () {
-//     expect(binarySearchIndex([], 0)).toEqual(-1);
-//     expect(binarySearchIndex([1, 2, 3, 4], 0)).toEqual(-1);
-//     expect(binarySearchIndex([1, 2], 11)).toEqual(-1);
-//   });
-// });
+  it("should return -1 if the value is not found", function () {
+    expect(binarySearchIndex([], 0)).toEqual(-1);
+    expect(binarySearchIndex([1, 2, 3, 4], 0)).toEqual(-1);
+    expect(binarySearchIndex([1, 2], 11)).toEqual(-1);
+  });
+
+  describe("test the functionality of balancedBrackets", function () {
+    it("returns true when the brackets are balanced", function () {
+      expect(balancedBrackets('')).toBe(true);
+      expect(balancedBrackets('hello')).toBe(true);
+      expect(balancedBrackets('(hi)[there]')).toBe(true);
+      expect(balancedBrackets('[()][(a)(b)]()')).toBe(true);
+    });
+
+    it("returns false when the brackets are not balanced", function () {
+      expect(balancedBrackets('((a)')).toBe(false);
+      expect(balancedBrackets('(] (b)')).toBe(false);
+      expect(balancedBrackets('((a) ([)] (c)')).toBe(false);
+      expect(balancedBrackets('(((hi)))))')).toBe(false);
+      expect(balancedBrackets('[]][[]')).toBe(false);
+    });
+  });
+});
