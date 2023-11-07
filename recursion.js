@@ -102,6 +102,15 @@ function findIndex(arr, val) {
 
 function gatherStrings(obj) {
 
+  let strings = [];
+  for (let key in obj){
+    if (typeof(obj[key]) === "string"){
+      strings.push(obj[key]);
+    } else if (typeof(obj[key] === "object")){
+      strings.push(...gatherStrings(obj[key]))
+    }
+  }
+  return strings;
 }
 
 // FURTHER STUDY
@@ -109,8 +118,20 @@ function gatherStrings(obj) {
 /** binarySearch: given a sorted array of numbers, and a value,
  * return true if val is in array, false if not present). */
 
-function binarySearch(arr, val) {
+// [0, 1, 2, 3, 4]
+//Check mid, if less -> call binarySearch on slice(0,mid)
+//if greater -> call binarySearch on slice(mid+1)
 
+
+
+function binarySearch(arr, val) {
+  if (arr.length === 0) return false;
+
+  let mid = Math.floor((arr.length - 1)/2);
+
+  if (arr[mid] === val) return true;
+  if (arr[mid] > val) return binarySearch(arr.slice(0, mid), val);
+  else return binarySearch(arr.slice(mid+1), val);
 }
 
 
